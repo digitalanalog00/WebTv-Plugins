@@ -65,13 +65,9 @@ class Torrentio {
 
     }
     async onStreamClick(stream) {
-        console.log("Updated Call!!!")
-        let response = await PluginHttp.request("http://localhost:8080/", "GET", null, null, false);
-        console.log(JSON.stringify(response))
         const startStreamUrl = "http://localhost:8080/stream/start"
         const rawMagnet = `magnet:?xt=urn:btih:${stream.infoHash}`;
-        response = await PluginHttp.request(startStreamUrl, "POST", rawMagnet, null, false)
-        console.log("Ok Time to Play!!")
+        await http.request(startStreamUrl, "POST", rawMagnet, null, false)
         let streamUrl = `http://localhost:8080/stream?link=${rawMagnet}`
         PluginPlayer.play(streamUrl);
     }

@@ -14,5 +14,5 @@
 
  async function saveTorbox(jsObject) {
      var data = JSON.parse(jsObject);
-     await PluginDatabase.setCacheKey('torbox_api', data.torbox_api, 'core');
+     await PluginDatabase.setCacheKey('torbox_api', data.torbox_api, 'torbox');
  }

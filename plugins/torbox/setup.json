@@ -2,5 +2,8 @@
     "plugin_id": "torbox",
     "pluginName": "Torbox",
     "version": "1.0",
-    "repo_id": ""
+    "repo_id": "",
+    "cache_keys": [
+      "torbox_api"
+    ]
 }
