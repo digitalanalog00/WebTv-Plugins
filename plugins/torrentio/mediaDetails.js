@@ -71,7 +71,9 @@ class Torrentio {
         const response = await PluginHttp.request(startStreamUrl, "POST", rawMagnet, null, false)
         console.log("Ok Time to Play!!")
         let streamUrl = `http://localhost:8080/stream?link=${rawMagnet}`
-        PluginPlayer.play(streamUrl);
+        const response = await PluginHttp.request(streamUrl, "GET", null, null, false)
+        const playUrl = "http://localhost:8080/play"
+        PluginPlayer.play(playUrl);
     }
 }
 var torrentio = new Torrentio("torrentio")
