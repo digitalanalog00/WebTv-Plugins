@@ -30,8 +30,6 @@ class Torbox {
             }
             this.apiKey = await PluginDatabase.getCacheKey('torbox_api');
             console.log("Starting Torbox")
-            debugger;
-            this.headers = this.getHeaders();
             const http = PluginHttp;
             var returnStream = [];
             this.proxy = await PluginDatabase.getCacheKey('proxy_url');
@@ -58,14 +56,6 @@ class Torbox {
         } catch (e) {
             console.log("Plugin Error: " + e.message);
         }
-    }
-
-    getHeaders() {
-        var headers = {
-            "Authorization": "Bearer "+this.apiKey,
-            "Content-Type": "multipart/form-data"
-        };
-        return headers;
     }
 
     filterBestStreams(data) {
