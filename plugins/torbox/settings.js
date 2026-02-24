@@ -8,9 +8,9 @@
          placeholder: "Enter Api Key",
          value: torbox_api
      }));
+      Form.setSubmitHandler("saveTorbox");
+      Form.endGroup();
 })();
- Form.setSubmitHandler("saveTorbox");
- Form.endGroup();
 
  async function saveTorbox(jsObject) {
      var data = JSON.parse(jsObject);
