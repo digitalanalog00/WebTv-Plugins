@@ -29,26 +29,7 @@
             placeholder: "Enter Access Token",
             value: access_token
         }));
-
         Form.setSubmitHandler("saveTmdb");
-        Form.endGroup();
-
-        Form.beginGroup("m34u_group", "M3U4U.com IPTV");
-        Form.addField(JSON.stringify({
-            type: "text",
-            id: "m3u_url",
-            label: "M3U Url",
-            placeholder: "Enter Api Key",
-            value: "M3U Url"
-        }));
-        Form.addField(JSON.stringify({
-            type: "text",
-            id: "epg_url",
-            label: "EPG URL",
-            placeholder: "EPG URL",
-            value: "Epg URL"
-        }));
-        Form.setSubmitHandler("saveProfile");
         Form.endGroup();
         console.log("Database keys loaded successfully");
 
