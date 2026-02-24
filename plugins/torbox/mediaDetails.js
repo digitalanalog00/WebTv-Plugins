@@ -30,6 +30,7 @@ class Torbox {
             }
             this.apiKey = await PluginDatabase.getCacheKey('torbox_api');
             console.log("Starting Torbox")
+            debugger;
             this.headers = this.getHeaders();
             const http = PluginHttp;
             var returnStream = [];
