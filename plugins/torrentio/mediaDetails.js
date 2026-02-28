@@ -6,12 +6,14 @@ class Torrentio {
     instanceName = ""
     streams = [];
     proxy = "";
+    port = ""
     constructor(instanceName) {
         Plugin.registerInstance(instanceName)
         this.instanceName = instanceName;
     }
     async init() {
         this.proxy = await PluginDatabase.getCacheKey('proxy_url');
+        this.port = await PluginDatabase.getCacheKey('server_port');
         const media = movie
         if(media.media_type == "season" || media.media_type == "tv") {
             console.log("No Streams For Seasons");
@@ -66,13 +68,13 @@ class Torrentio {
     }
     async onStreamClick(stream) {
         console.log("Updated Call!!!")
-        const startStreamUrl = "http://localhost:8080/stream/start";
+        const startStreamUrl = `http://localhost:${this.port}/stream/start`;
         const rawMagnet = `magnet:?xt=urn:btih:${stream.infoHash}`;
         await PluginHttp.request(startStreamUrl, "POST", rawMagnet, null, false);
         console.log("Ok Time to Play!!");
-        let streamUrl = `http://localhost:8080/stream?link=${rawMagnet}`;
+        let streamUrl = `http://localhost:${this.port}/stream?link=${rawMagnet}`;
         await PluginHttp.request(streamUrl, "GET", null, null, false);
-        const playUrl = "http://localhost:8080/play";
+        const playUrl = `http://localhost:${this.port}/play`;
         PluginPlayer.play(playUrl);
     }
 }
