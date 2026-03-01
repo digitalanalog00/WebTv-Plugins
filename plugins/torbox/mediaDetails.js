@@ -39,7 +39,7 @@ class Torbox {
                 searchUrl = this.proxy+this.buildSearchUrlMovies(imdb);
             }
             this.headers = this.buildHeaders(this.apiKey);
-            const response = JSON.parse(await PluginHttp.request(searchUrl, "GET", null, null, this.headers));
+            const response = JSON.parse(await PluginHttp.request(searchUrl, "GET", null, this.headers, false));
             //var filteredResults = this.filterBestStreams(response.body.data.torrents)
             response.body.data.torrents.forEach(torrent => {
                 returnStream.push({
