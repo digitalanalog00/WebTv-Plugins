@@ -67,7 +67,7 @@ class Torrentio {
 
     }
     async onStreamClick(stream) {
-        console.log("Updated Call!!!")
+        console.log(`Updated Call!!! On Port: ${this.port}`)
         const startStreamUrl = `http://localhost:${this.port}/stream/start`;
         const rawMagnet = `magnet:?xt=urn:btih:${stream.infoHash}`;
         await PluginHttp.request(startStreamUrl, "POST", rawMagnet, null, false);
