@@ -3,11 +3,8 @@ class Torbox {
     tabName = "Torbox";
     instanceName = ""
     streams = [];
-    apiKey = "5e77abb8-6908-4f50-aead-eb4b160ef9f4"
-    headers = {
-        "Authorization": "Bearer "+this.apiKey,
-        "Content-Type": "multipart/form-data"
-    };
+    apiKey = ""
+    headers = {};
     proxy = "";
     lookupUrl = `https://api.themoviedb.org/3/movie/${movie_id}/external_ids?api_key=${tmdbApiKey}`;
     endpoint = ""
