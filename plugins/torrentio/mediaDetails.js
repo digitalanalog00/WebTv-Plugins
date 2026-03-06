@@ -68,13 +68,13 @@ class Torrentio {
     }
     async onStreamClick(stream) {
         console.log(`Updated Call!!! On Port: ${this.port}`)
-        const startStreamUrl = `http://localhost:${this.port}/stream/start`;
+        const startStreamUrl = `http://localhost:${this.port}/tor/stream/start`;
         const rawMagnet = `magnet:?xt=urn:btih:${stream.infoHash}`;
         await PluginHttp.request(startStreamUrl, "POST", rawMagnet, null, false);
         console.log("Ok Time to Play!!");
-        let streamUrl = `http://localhost:${this.port}/stream?link=${rawMagnet}`;
+        let streamUrl = `http://localhost:${this.port}/tor/stream?link=${rawMagnet}`;
         await PluginHttp.request(streamUrl, "GET", null, null, false);
-        const playUrl = `http://localhost:${this.port}/play`;
+        const playUrl = `http://localhost:${this.port}/tor/play`;
         PluginPlayer.play(playUrl);
     }
 }
