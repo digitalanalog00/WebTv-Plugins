@@ -3,6 +3,7 @@
         var proxyUrl = await PluginDatabase.getCacheKey('proxy_url');
         var tmdb_api_key = await PluginDatabase.getCacheKey('tmdb_api_key');
         var access_token = await PluginDatabase.getCacheKey('access_token');
+        var server_port = await PluginDatabase.getCacheKey('server_port');
         Form.beginGroup("proxy_url", "Proxy URL");
         Form.addField(JSON.stringify({
             type: "text",
@@ -10,6 +11,13 @@
             label: "Proxy Url",
             placeholder: "Enter Url",
             value: proxyUrl
+        }));
+        Form.addField(JSON.stringify({
+            type: "text",
+            id: "server_port",
+            label: "Stream Server Port",
+            placeholder: "Enter Port",
+            value: server_port
         }));
         Form.setSubmitHandler("saveProxyUrl");
         Form.endGroup();
@@ -48,4 +56,5 @@ async function saveProxyUrl(jsObject) {
     var data = JSON.parse(jsObject);
     console.log(`Saving data ${data.proxy_url}`)
     await PluginDatabase.setCacheKey('proxy_url', data.proxy_url, 'core')
+    await PluginDatabase.setCacheKey('server_port', data.server_port, 'core')
 }
