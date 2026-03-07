@@ -106,15 +106,19 @@ class Torbox {
     }
 
     async onStreamClick(stream) {
-        console.log(this.instanceName + "Has Been CLicked "+stream.name);
-        const body = JSON.stringify({
-            "magnet": stream.magnet
-        });
-        const url = this.endpoint+this.createTorrentUrl;
-        const response = await PluginHttp.request(url, "POST", body, this.headers, true);
-        const data = JSON.parse(response);
-        this.torrent_id = data.body.data.torrent_id;
-        this.getMyList();
+        try {
+            console.log(this.instanceName + "Has Been CLicked "+stream.name);
+            const body = JSON.stringify({
+                "magnet": stream.magnet
+            });
+            const url = this.endpoint+this.createTorrentUrl;
+            const response = await PluginHttp.request(url, "POST", body, this.headers, true);
+            const data = JSON.parse(response);
+            this.torrent_id = data.body.data.torrent_id;
+            this.getMyList();
+        } catch(e) {
+            PluginMessage.showMessage(`Error: ${e.message}`)
+        }
     }
 
     async getMyList() {
