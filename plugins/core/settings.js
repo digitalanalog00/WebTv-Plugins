@@ -57,4 +57,5 @@ async function saveProxyUrl(jsObject) {
     console.log(`Saving data ${data.proxy_url}`)
     await PluginDatabase.setCacheKey('proxy_url', data.proxy_url, 'core')
     await PluginDatabase.setCacheKey('server_port', data.server_port, 'core')
+    PluginMessage.showMessage("Message Saved")
 }
