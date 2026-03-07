@@ -117,7 +117,7 @@ class Torbox {
             this.torrent_id = data.body.data.torrent_id;
             this.getMyList();
         } catch(e) {
-            PluginMessage.showMessage(`Error: ${e.message}`)
+            PluginMessage.showMessage(`Error: Likely 404 ${e.message}`)
         }
     }
 
