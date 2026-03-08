@@ -112,7 +112,7 @@ class Torbox {
                 "magnet": stream.magnet
             });
             const url = this.endpoint+this.createTorrentUrl;
-            const response = await PluginHttp.request(url, "POST", body, this.headers, true);
+            const response = await PluginHttp.request(url, "POST", body, JSON.stringify(this.headers), true);
             const data = JSON.parse(response);
             this.torrent_id = data.body.data.torrent_id;
             this.getMyList();
@@ -123,7 +123,7 @@ class Torbox {
 
     async getMyList() {
         const url = this.endpoint+this.myListUrl;
-        const response = JSON.parse(await PluginHttp.request(url, "GET", null, this.headers, false));
+        const response = JSON.parse(await PluginHttp.request(url, "GET", null, JSON.stringify(this.headers), false));
         const validStreams = this.filterValidStreams(response.body.data);
         this.getDownloadLink(validStreams);
     }
@@ -139,7 +139,7 @@ class Torbox {
         const url = this.endpoint + this.requestDownloadLink + "&torrent_id=" + this.torrent_id + "&file_id=" + fileId;
 
         console.log("Attempting index " + currentIndex + ": " + url);
-        const response = JSON.parse(await PluginHttp.request(url, "GET", null, this.headers, false));
+        const response = JSON.parse(await PluginHttp.request(url, "GET", null, JSON.stringify(this.headers), false));
         const data = response.body;
 
         // 2. Success Case
