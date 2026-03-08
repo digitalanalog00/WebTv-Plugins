@@ -10,7 +10,7 @@ class Torbox {
     endpoint = ""
     createTorrentUrl = "torrents/createtorrent/"
     myListUrl = "torrents/mylist"
-    requestDownloadLink = "torrents/requestdl?token="+this.apiKey
+    requestDownloadLink = "torrents/requestdl?token="
 
     torrent_id = 0
     constructor(instanceName) {
@@ -26,6 +26,7 @@ class Torbox {
                 return
             }
             this.apiKey = await PluginDatabase.getCacheKey('torbox_api');
+            this.requestDownloadLink = this.requestDownloadLink+this.apiKey
             console.log("Starting Torbox")
             const http = PluginHttp;
             var returnStream = [];
@@ -139,7 +140,7 @@ class Torbox {
         const url = this.endpoint + this.requestDownloadLink + "&torrent_id=" + this.torrent_id + "&file_id=" + fileId;
 
         console.log("Attempting index " + currentIndex + ": " + url);
-        const response = JSON.parse(await PluginHttp.request(url, "GET", null, JSON.stringify(this.headers), false));
+        const response = JSON.parse(await PluginHttp.request(url, "GET", null, null, false));
         const data = response.body;
 
         // 2. Success Case
