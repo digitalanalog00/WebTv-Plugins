@@ -40,7 +40,7 @@ class Torbox {
             }
             this.headers = this.buildHeaders(this.apiKey);
             const response = JSON.parse(await PluginHttp.request(searchUrl, "GET", null, JSON.stringify(this.headers), false));
-            //var filteredResults = this.filterBestStreams(response.body.data.torrents)
+            var filteredResults = this.filterBestStreams(response.body.data.torrents)
             response.body.data.torrents.forEach(torrent => {
                 returnStream.push({
                     name: torrent.title_parsed_data.title,
