@@ -151,6 +151,9 @@ class Torbox {
             PluginPlayer.play(finalInfo);
             return data; // Return the actual data up the chain
         }
+        if(data.success === false) {
+            PluginMessage.showMessage(data.detail)
+        }
         // 3. Failure Case: Try the next one
         console.log("The best file " + currentIndex + " failed");
     }
