@@ -54,6 +54,7 @@ class Torrentio {
             console.log(message);
             PluginMessage.showMessage(message);
             this.streams = [];
+            return "[]"
         }
     }
 

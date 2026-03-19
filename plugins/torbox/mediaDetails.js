@@ -56,6 +56,7 @@ class Torbox {
             var message = "Plugin Error: " + e.message;
             console.log(message);
             PluginMessage.showMessage(message);
+            return "[]"
         }
     }
 
