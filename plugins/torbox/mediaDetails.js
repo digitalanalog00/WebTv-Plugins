@@ -53,7 +53,7 @@ class Torbox {
             this.streams = JSON.stringify(returnStream);
             PluginReporter.onResult(this.instanceName, "initComplete")
         } catch (e) {
-            var message = "Plugin Error: " + e.message;
+            var message = "Plugin Error: Error Connecting to Streams. Possibly Proxy or script";
             console.log(message);
             PluginMessage.showMessage(message);
             return "[]"
