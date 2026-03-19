@@ -50,7 +50,9 @@ class Torrentio {
             this.streams = JSON.stringify(returnStream);
             PluginReporter.onResult(this.instanceName, "initComplete")
         } catch (e) {
-            console.log("Plugin Error: " + e);
+            var message = "Plugin Error: " + e.message;
+            console.log(message);
+            PluginMessage.showMessage(message);
             this.streams = [];
         }
     }
