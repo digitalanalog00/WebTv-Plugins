@@ -21,24 +21,6 @@
         }));
         Form.setSubmitHandler("saveProxyUrl");
         Form.endGroup();
-
-        Form.beginGroup("tmdb_api_group", "TMDB Api");
-        Form.addField(JSON.stringify({
-            type: "text",
-            id: "tmdb_api_key",
-            label: "Api Key",
-            placeholder: "Enter Api Key",
-            value: tmdb_api_key
-        }));
-        Form.addField(JSON.stringify({
-            type: "text",
-            id: "access_token",
-            label: "Api Access Token",
-            placeholder: "Enter Access Token",
-            value: access_token
-        }));
-        Form.setSubmitHandler("saveTmdb");
-        Form.endGroup();
         console.log("Database keys loaded successfully");
 
     } catch (e) {

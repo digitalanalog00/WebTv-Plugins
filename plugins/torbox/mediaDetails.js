@@ -6,7 +6,7 @@ class Torbox {
     apiKey = ""
     headers = {};
     proxy = "";
-    lookupUrl = `https://api.themoviedb.org/3/movie/${movie_id}/external_ids?api_key=${tmdbApiKey}`;
+    lookupUrl = "";
     endpoint = ""
     createTorrentUrl = "torrents/createtorrent/"
     myListUrl = "torrents/mylist"
@@ -15,11 +15,19 @@ class Torbox {
     torrent_id = 0
     constructor(instanceName) {
         Plugin.registerInstance(instanceName)
+        this.lookupUrl = this.initLookupurl()
         this.instanceName = instanceName;
         this.headers = JSON.stringify(this.headers);
     }
+    initLookupurl() {
+        if(movie_id) {
+            return `https://api.themoviedb.org/3/movie/${movie_id}/external_ids?api_key=${tmdbApiKey}`;
+        }
+        return '';
+    }
     async init() {
         try {
+            this.lookupUrl = this.initLookupurl()
             var media = movie;
             if(media.media_type == "season" || media.media_type == "tv") {
                 console.log("No Streams For Seasons");
