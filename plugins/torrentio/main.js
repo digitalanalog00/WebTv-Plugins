@@ -11,7 +11,7 @@ class Torrentio {
         Plugin.registerInstance(instanceName)
         this.instanceName = instanceName;
     }
-    async init() {
+    async onMediaDetails() {
         this.proxy = await PluginDatabase.getCacheKey('proxy_url');
         this.port = await PluginDatabase.getCacheKey('server_port');
         const media = movie
