@@ -15,7 +15,6 @@ class Torbox {
     torrent_id = 0
     constructor(instanceName) {
         Plugin.registerInstance(instanceName)
-        this.lookupUrl = this.initLookupurl()
         this.instanceName = instanceName;
         this.headers = JSON.stringify(this.headers);
     }
