@@ -24,7 +24,7 @@ class Torbox {
         }
         return '';
     }
-    async init() {
+    async onPageDetails() {
         try {
             this.lookupUrl = this.initLookupurl()
             var media = movie;
