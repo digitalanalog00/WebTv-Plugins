@@ -78,8 +78,7 @@ class Torrentio {
         let streamUrl = `http://localhost:${this.port}/tor/stream?link=${rawMagnet}`;
         await PluginHttp.request(streamUrl, "GET", null, null, false);
         const playUrl = `http://localhost:${this.port}/tor/play`;
-        let browserUrl = `http://localhost:${this.port}/browser/stream`;
-        PluginPlayer.play(browserUrl);
+        PluginPlayer.play(playUrl);
     }
 }
 var torrentio = new Torrentio("torrentio")
