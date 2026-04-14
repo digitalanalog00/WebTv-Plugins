@@ -12,3 +12,8 @@ and for URL paste in the GitHub URL https://github.com/digitalanalog00/WebTv-Plu
 
 Click Add repository and Import and your set!!!!
 
+
+## TMDB API
+Go to TMDB 
+https://www.themoviedb.org/
+
